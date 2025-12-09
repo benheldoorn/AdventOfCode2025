@@ -1,4 +1,4 @@
-var ranges = File.ReadAllLines("5a.input")
+var ranges = File.ReadAllLines("5.txt")
     .TakeWhile(line => !string.IsNullOrWhiteSpace(line))
     .Select(line => line.Split("-"))
     .Select(parts => new RangeType() { Start = long.Parse(parts[0]), End = long.Parse(parts[1]) })
@@ -62,7 +62,9 @@ while (repeat)
     }
 }
 
-Console.WriteLine(newRanges.Select(ranges => ranges.End - ranges.Start + 1).Sum());
+var answer = newRanges.Select(ranges => ranges.End - ranges.Start + 1).Sum();
+
+Console.WriteLine(answer);
 
 class RangeType
 {

@@ -1,4 +1,4 @@
-var input = File.ReadAllLines("6a.input");
+var input = File.ReadAllLines("6.txt");
 
 var operands = input[..^1]
     .Select(line => line
@@ -13,12 +13,12 @@ var operaters = input[^1]
 
 long total = 0;
 
-for (int i = 0; i < operaters.Count; i++)
+for (var i = 0; i < operaters.Count; i++)
 {
     var @operator = operaters[i];
     long result = @operator == '*' ? 1 : 0;
 
-    for (int j = 0; j < operands.Count; j++)
+    for (var j = 0; j < operands.Count; j++)
     {
         var operand = operands[j][i];
         

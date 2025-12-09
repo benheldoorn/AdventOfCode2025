@@ -1,4 +1,4 @@
-var junctions = File.ReadAllLines("8a.input")
+var junctions = File.ReadAllLines("8.txt")
     .Select(line => line.Split(","))
     .Select(parts => new Coordinate(
         X: int.Parse(parts[0]),
@@ -70,7 +70,8 @@ var answer = circuits
     .Take(3)
     .Aggregate(1, (acc, circuit) => acc * circuit.Count);
 
-Console.WriteLine($"Answer: {answer}");
+Console.WriteLine(answer);
 
 record Coordinate(int X, int Y, int Z);
+
 record Connection(Coordinate From, Coordinate To, double Distance);

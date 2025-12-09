@@ -1,4 +1,4 @@
-var pairs = System.IO.File.ReadAllText("2a.input").Split(',');
+var pairs = File.ReadAllText("2.txt").Split(',');
 
 var sum = 0L;
 

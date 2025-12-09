@@ -1,4 +1,4 @@
-var batteries = File.ReadAllLines("3a.input")
+var batteries = File.ReadAllLines("3.txt")
     .Select(line => line.Select(c => c - '0').ToArray())
     .ToArray();
 
@@ -8,7 +8,7 @@ foreach (var battery in batteries)
 {
     var sum = 0L;
     var indexOfMax = -1;
-    for (int i = 1; i <= 12; i++)
+    for (var i = 1; i <= 12; i++)
     {
         var skip = indexOfMax + 1;
         var max = battery.Skip(skip).SkipLast(12 - i).Max();

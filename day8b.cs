@@ -1,4 +1,4 @@
-var junctions = File.ReadAllLines("8a.input")
+var junctions = File.ReadAllLines("8.txt")
     .Select(line => line.Split(","))
     .Select(parts => new Coordinate(
         X: int.Parse(parts[0]),
@@ -24,6 +24,7 @@ foreach (var connection in connections)
 {
     List<Coordinate> fromCircuit = null;
     List<Coordinate> toCircuit = null;
+
     foreach (var circuit in circuits)
     {
         if (circuit.Contains(connection.From))
@@ -46,52 +47,28 @@ foreach (var connection in connections)
     {
         fromCircuit.AddRange(toCircuit);
         circuits.Remove(toCircuit);
-        if (circuits.Count() == 1)
-        {
-            if (junctions.All(j => circuits[0].Contains(j)))
-            {
-                var answer = connection.From.X * connection.To.X;
-                Console.WriteLine($"Answer: {answer}");
-                break;
-            }
-        }
-
-        continue;
     }
-
-    if (fromCircuit != null)
+    else if (fromCircuit != null)
     {
         fromCircuit.Add(connection.To);
-        if (circuits.Count() == 1)
-        {
-            if (junctions.All(j => circuits[0].Contains(j)))
-            {
-                var answer = connection.From.X * connection.To.X;
-                Console.WriteLine($"Answer: {answer}");
-                break;
-            }
-        }
-        
-        continue;
     }
-
-    if (toCircuit != null)
+    else if (toCircuit != null)
     {
         toCircuit.Add(connection.From);
-        if (circuits.Count() == 1)
-        {
-            if (junctions.All(j => circuits[0].Contains(j)))
-            {
-                var answer = connection.From.X * connection.To.X;
-                Console.WriteLine($"Answer: {answer}");
-                break;
-            }
-        }
-        continue;
+    }
+    else
+    {
+        circuits.Add(new List<Coordinate>() { connection.From, connection.To });
     }
 
-    circuits.Add(new List<Coordinate>() { connection.From, connection.To });
+    if (circuits.Count() == 1 && junctions.All(j => circuits[0].Contains(j)))
+    {
+        var answer = connection.From.X * connection.To.X;
+        Console.WriteLine(answer);
+        break;
+    }
 }
 
 record Coordinate(int X, int Y, int Z);
+
 record Connection(Coordinate From, Coordinate To, double Distance);

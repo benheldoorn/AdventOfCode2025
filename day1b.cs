@@ -1,6 +1,8 @@
-var lines = System.IO.File.ReadAllLines("1a.input");
+var lines = File.ReadAllLines("1.txt");
+
 int count = 0;
 var dail = 50;
+
 foreach (var line in lines)
 {
     bool startFromZero = dail == 0;
@@ -9,7 +11,7 @@ foreach (var line in lines)
 
     if (startFromZero && dail < 0)
     {
-        count--;
+        dail += 100;
     }
 
     while (dail < 0)
@@ -18,7 +20,10 @@ foreach (var line in lines)
         count++;
     }
 
-    if (dail == 0) count++;
+    if (dail == 0)
+    {
+        count++;
+    }
 
     while (dail >= 100)
     {
@@ -27,4 +32,4 @@ foreach (var line in lines)
     }
 }
 
-System.Console.WriteLine(count);
+Console.WriteLine(count);

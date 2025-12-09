@@ -1,10 +1,10 @@
-var ranges = File.ReadAllLines("5a.input")
+var ranges = File.ReadAllLines("5.txt")
     .TakeWhile(line => !string.IsNullOrWhiteSpace(line))
     .Select(line => line.Split("-"))
     .Select(parts => (Start: long.Parse(parts[0]), End: long.Parse(parts[1])))
     .ToList();
 
-var ids = File.ReadAllLines("5a.input")
+var ids = File.ReadAllLines("5.txt")
     .SkipWhile(line => !string.IsNullOrWhiteSpace(line))
     .Skip(1)
     .Select(line => long.Parse(line))

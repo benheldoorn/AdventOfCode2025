@@ -1,4 +1,4 @@
-var input = File.ReadAllLines("6a.input")
+var input = File.ReadAllLines("6.txt")
     .Select(line => line.ToCharArray())
     .ToArray();
 
@@ -57,7 +57,7 @@ foreach (var line in concatenated)
         @operator = '+';
     }
 
-    operands.Add( long.Parse(line.Replace('*', ' ')
+    operands.Add(long.Parse(line.Replace('*', ' ')
         .Replace('+', ' ')));
 }
 

@@ -1,4 +1,4 @@
-var batteries = File.ReadAllLines("3a.input")
+var batteries = File.ReadAllLines("3.txt")
     .Select(line => line.Select(c => c - '0').ToArray())
     .ToArray();
 

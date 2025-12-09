@@ -1,4 +1,4 @@
-var input = File.ReadAllLines("7a.input");
+var input = File.ReadAllLines("7.txt");
 
 var beams = input[0].ToCharArray().Select(c => c == 'S' ? 1L : 0).ToArray();
 

@@ -1,13 +1,7 @@
-var pairs = System.IO.File.ReadAllText("2a.input")
+var pairs = File.ReadAllText("2.txt")
     .Split(',')
-    .Select(pair =>
-    {
-        var parts = pair.Split('-');
-        var start = long.Parse(parts[0]);
-        var end = long.Parse(parts[1]);
-
-        return (start: start, end: end );
-    })
+    .Select(pair => pair.Split('-'))
+    .Select(parts => (start: long.Parse(parts[0]), end: long.Parse(parts[1])))
     .ToArray();
 
 var max = pairs.Max(p => p.end);
@@ -41,4 +35,5 @@ for (var sequenceLength = 1; sequenceLength <= sequenceLengthMax; sequenceLength
 }
 
 var sum = values.Distinct().Sum();
+
 Console.WriteLine(sum);
